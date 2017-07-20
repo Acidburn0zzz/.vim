@@ -14,10 +14,12 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 function PwdLast()
 	let spl = split(expand('%:p'), '/')
-	if(len(spl) >= 3)
+	if(len(spl) > 3)
 		return spl[-3] . "/" . spl[-2] . "/" . spl[-1]
+	elseif(len(spl) == 3)
+		return "/" . spl[-3] . "/" . spl[-2] . "/" . spl[-1]
 	elseif(len(spl) == 2)
-		return spl[-2] . "/" . spl[-1]
+		return "/" . spl[-2] . "/" . spl[-1]
 	elseif(len(spl) == 1)
 		return "/" . spl[-1]
 	else
