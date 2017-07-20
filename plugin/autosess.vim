@@ -26,6 +26,7 @@ let s:session_file  = substitute(getcwd(), '[:\\/]', '%', 'g').'.vim'
 autocmd VimEnter *		if v:this_session == '' | let v:this_session = expand(g:autosess_dir).'/'.s:session_file | endif
 autocmd VimEnter * nested	if !argc()  | call AutosessRestore() | endif
 autocmd VimLeave *		if !v:dying | call AutosessUpdate()  | endif
+autocmd CursorHold *    call AutosessUpdate()
 
 
 " 1. If 'swap file already exists' situation happens while restoring
@@ -63,7 +64,7 @@ function AutosessUpdate()
 		execute 'mksession! ' . fnameescape(v:this_session)
 	else
 		call delete(v:this_session)
-	elseif
+	endif
 	"elseif winnr('$') == 1 && line('$') == 1 && col('$') == 1
 	"endif
 endfunction
