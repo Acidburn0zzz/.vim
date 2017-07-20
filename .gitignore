@@ -1,0 +1,8 @@
+*.DS_Store
+*.netrwhist
+*~
+*.swp
+sessions/
+swp/
+undo/
+bak/
