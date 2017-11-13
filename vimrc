@@ -30,6 +30,16 @@ set laststatus=2 " Show status line with only one buffer open
 set statusline=%{PwdLast()}[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set statusline+=%{fugitive#statusline()}
 
+if !isdirectory($HOME."/.vim/bak")
+	call mkdir($HOME."/.vim/bak", "p", 0700)
+endif
+if !isdirectory($HOME."/.vim/swp")
+	call mkdir($HOME."/.vim/swp", "p", 0700)
+endif
+if !isdirectory($HOME."/.vim/undo")
+	call mkdir($HOME."/.vim/undo", "p", 0700)
+endif
+
 set backupdir=~/.vim/bak//
 set directory=~/.vim/swp//
 set undodir=~/.vim/undo//
